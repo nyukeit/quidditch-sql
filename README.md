@@ -12,15 +12,18 @@ Retourne les noms, prénoms, rôle et équipe de tous les joueurs, classés  dan
 
 ```mysql
 SELECT 
-	w.lastname AS wizard_lastname, 
-	w.firstname AS wizard_firstname, 
-    p.role, 
-    t.name AS team_name
-FROM wizard AS w
-JOIN player p ON w.id=wizard_id
-JOIN team t ON p.team_id=t.id
+  w.lastname AS wizard_lastname, 
+  w.firstname AS wizard_firstname, 
+  p.role, 
+  t.name AS team_name
+FROM 
+  wizard AS w
+JOIN 
+  player p ON w.id=wizard_id
+JOIN 
+  team t ON p.team_id=t.id
 ORDER BY
-	t.name, p.role, w.lastname, w.firstname;
+  t.name, p.role, w.lastname, w.firstname;
 ```
 
 #### Results
@@ -119,15 +122,18 @@ Retourne uniquement les prénoms et noms des joueurs ayant le rôle de *seeker* 
 #### Code
 
 ```mysql
-SELECT 
-	w.lastname AS wizard_lastname, 
-	w.firstname AS wizard_firstname, 
-    p.role
-FROM wizard AS w
-JOIN player p ON w.id=wizard_id
-WHERE p.role='seeker'
+SELECT
+  w.lastname AS wizard_lastname,
+  w.firstname AS wizard_firstname, 
+  p.role
+FROM 
+  wizard AS w
+JOIN 
+  player p ON w.id=wizard_id
+WHERE 
+  p.role='seeker'
 ORDER BY
-	w.lastname, w.firstname;
+  w.lastname, w.firstname;
 ```
 
 #### Results
@@ -159,12 +165,15 @@ Retourne la liste de tous les sorciers qui ne pratiquent pas le quidditch.
 
 ```mysql
 SELECT
-	w.id,
-	w.lastname,
-	w.firstname
-FROM wizard w
-LEFT JOIN player p ON w.id=p.wizard_id
-WHERE p.wizard_id IS NULL;
+  w.id,
+  w.lastname,
+  w.firstname
+FROM 
+  wizard w
+LEFT JOIN 
+  player p ON w.id=p.wizard_id
+WHERE 
+  p.wizard_id IS NULL;
 ```
 
 #### Results
